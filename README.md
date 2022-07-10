@@ -47,4 +47,4 @@ docker-compose --env-file .env up
 ``
 
 
-_**NOTE**_ : docker-compose-2 is just for explain in []()
+_**NOTE**_ : docker-compose-2 is just for explain in [All you need is docker-compose](https://medium.com/@elibialany/all-you-need-is-docker-compose-511f2a6fcab5)

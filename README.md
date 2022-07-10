@@ -16,7 +16,14 @@ CREATE DATABASE <WORDPRESS_DB_2> DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode
 GRANT ALL ON <WORDPRESS_DB_2>.* TO '<WORDPRESS_USR>'@'%';
 ``
 
-**with this values** _docker-compose.yml_  **with those values are in .env file**.
+**like:**
+
+``
+CREATE DATABASE worddb DEFAULT CHARACTER SET utf8 COLLATE.....
+#more
+``
+
+**with those values are in .env file**.
 <code>
 <p>..</p>
 <p>    environment:</p>
@@ -38,3 +45,6 @@ __RUN:__
 ``
 docker-compose --env-file .env up
 ``
+
+
+_**NOTE**_ : docker-compose-2 is just for explain in []()

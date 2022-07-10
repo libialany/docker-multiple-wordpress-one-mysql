@@ -1,0 +1,53 @@
+version: '3.1'
+services:
+  db: 
+    container_name: dbc
+    networks:
+      - app-network
+    ports:
+      - 3306:3306
+    image: mysql:5.7
+    volumes:
+      - db:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT}
+      MYSQL_USER: ${WORDPRESS_USR}
+      MYSQL_PASSWORD: ${WORDPRESS_PASSWD}
+  blog1:
+    image: wordpress
+    restart: always
+    ports:
+      - 8081:80
+    networks:
+      - app-network      
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: dbc
+      WORDPRESS_DB_USER: ${WORDPRESS_USR}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_PASSWD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_1}
+    volumes:
+      - ./blog1:/var/www/html
+  blog2:
+    image: wordpress
+    restart: always
+    networks:
+      - app-network          
+    ports:
+      - 8082:80
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: dbc
+      WORDPRESS_DB_USER: ${WORDPRESS_USR}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_PASSWD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_2}
+    volumes:
+      - ./blog2:/var/www/html
+volumes: 
+  db:
+networks:
+  app-network:

@@ -1,0 +1,5 @@
+CREATE DATABASE w1 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+GRANT ALL ON w1.* TO 'wordpress'@'%';
+CREATE DATABASE w2 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+GRANT ALL ON w2.* TO 'wordpress'@'%';
+
